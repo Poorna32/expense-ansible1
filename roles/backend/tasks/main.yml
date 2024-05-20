@@ -1,0 +1,64 @@
+- name: set prompt with component
+  ansible.builtin.shell: set-prompt {{ component  }}
+
+
+- name: Disable default nodejs version module
+  ansible.builtin.shell: dnf module disable nodejs -y
+
+- name: Enable NOdeJS module for V20
+  ansible.builtin.shell: dnf module disable nodejs -y
+
+- name: Install NodeJS
+  ansible.builtin.dnf:
+    name: nodejs
+    state: installed
+
+- name: Adding application User
+  ansible.builtin.user:
+    name: expense
+
+
+- name: Import App pre requisites
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app-pre-req
+
+
+- name: Download NodeJS Dependencies.
+  community.general.npm:
+    path: /app
+    state: latest
+
+- name: Copy backend Service File
+  ansible.builtin.template:
+    src: backend.service
+    dest: /etc/systemd/system/backend.service
+
+- name: Install Python Mysql Client
+  ansible.builtin.pip:
+    name:
+      - PyMySQL
+      - cryptography
+    executable: pip3.9
+
+- name: Install MySQL Client
+  ansible.builtin.dnf:
+    name: mysql
+    state: installed
+
+
+- name: Load Schema
+  community.mysql.mysql_db:
+    state: import
+    name: all
+    target: /app/schema/backend.sql
+    login_user: root
+    login_password: ExpenseApp@1
+    login_host: mysql-dev.poornachandra3.online
+
+- name: Start Backend Service
+  ansible.builtin.systemd_service:
+    name: backend
+    state: restarted
+    enabled: yes
+    daemon_reload: yes
