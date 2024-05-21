@@ -29,6 +29,7 @@
     path: /app
     state: latest
 
+
 - name: Copy backend Service File
   ansible.builtin.template:
     src: backend.service
@@ -62,3 +63,8 @@
     state: restarted
     enabled: yes
     daemon_reload: yes
+
+- name: Import NewRelic NodeJs Setup
+  ansible.builtin.import_role:
+    name: newrelic
+    tasks_from: nodejs
