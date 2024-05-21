@@ -18,6 +18,7 @@
     state: restarted
     name: nginx
 
+
 - name: Import NewRelic Nginx Setup
   ansible.builtin.import_role:
     name: NewRelic
