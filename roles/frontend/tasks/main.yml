@@ -20,5 +20,5 @@
 
 - name: Import NewRelic Nginx Setup
   ansible.builtin.import_role:
-    name: NewRelic
+    name: newrelic
     tasks_from: nginx
