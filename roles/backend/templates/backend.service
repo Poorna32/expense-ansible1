@@ -1,9 +1,8 @@
-
 [Unit]
 Description = Backend Service
 
 [Service]
-User=expense
+User="{{app_user}}"
 WorkingDirectory=/app
 Environment=DB_HOST="mysql-{{ env }}.poornachandra3.online"
 Environment=NEW_RELIC_APP_NAME=backend
@@ -13,3 +12,5 @@ SyslogIdentifier=backend
 
 [Install]
 WantedBy=multi-user.target
+
+
