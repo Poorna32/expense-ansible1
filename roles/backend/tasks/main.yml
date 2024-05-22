@@ -15,8 +15,7 @@
 
 - name: Adding application User
   ansible.builtin.user:
-    name: "{{ app_user }}"
-
+    name: "{{app_user}}"
 
 - name: Import App pre requisites
   ansible.builtin.import_role:
@@ -56,7 +55,6 @@
     login_user: root
     login_password: ExpenseApp@1
     login_host: mysql-dev.poornachandra3.online
-
 
 - name: Import NewRelic NodeJs Setup
   ansible.builtin.import_role:
