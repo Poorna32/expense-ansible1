@@ -29,12 +29,12 @@
     state: latest
 
 
-- name: Copy backend Service File
+- name: Copy Backend Service File
   ansible.builtin.template:
     src: backend.service
     dest: /etc/systemd/system/backend.service
 
-- name: Install Python Mysql Client
+- name: Install Python MySQL Client
   ansible.builtin.pip:
     name:
       - PyMySQL
