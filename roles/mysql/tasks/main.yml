@@ -3,13 +3,13 @@
     name: mysql-server
     state: installed
 
-- name: Start Mysql Service
+- name: Start MySql Service
   ansible.builtin.systemd_service:
     name: mysqld
     state: started
     enabled: yes
 
-- name: Install Python Mysql client
+- name: Install Python MySql client
   ansible.builtin.pip:
     name:
       - PyMySQL
@@ -26,7 +26,7 @@
   register: mysql_connection_output
   ignore_errors: yes
 
-- name: setup mysql password
-  ansible.builtin.shell: mysql_secure_installation --set--root-pass {{mysql_root_password}}
+- name: Setup MySql password
+  ansible.builtin.shell: mysql_secure_installation --set-root-pass {{mysql_root_password}}
   when: mysql_connection_output.failed is true
 
