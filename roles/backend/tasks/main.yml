@@ -57,7 +57,7 @@
 #    login_host: mysql-{{env}}.poornachandra3.online
 
 - name: Load Schema
-  ansible.builtin.shell: mysql -h {{ DB_HOST }} -uroot -p{{ mysql_root_password}} < /app/schema/backend.sql
+  ansible.builtin.shell: mysql -h {{ rds_endpoint }} -u{{rds_username}} -p{{ rds_password}} < /app/schema/backend.sql
 
 
 - name: Import NewRelic NodeJs Setup
