@@ -59,7 +59,6 @@
 - name: Load Schema
   ansible.builtin.shell: mysql -h {{ rds_endpoint }} -u{{rds_username}} -p{{rds_password}} < /app/schema/backend.sql
 
-
 - name: Import NewRelic NodeJs Setup
   ansible.builtin.import_role:
     name: newrelic
