@@ -3,7 +3,7 @@ Description=Node Exporter Service
 
 [Service]
 User=bin
-ExecStart=/opt/node_exporter-{{ version }}.linux-amd64.tar.gz/node_exporter
+ExecStart=/opt/node_exporter-{{ version }}.linux-amd64/node_exporter
 SyslogIdentifier=node_exporter
 
 [Install]
