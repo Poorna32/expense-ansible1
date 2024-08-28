@@ -12,4 +12,8 @@
   respond /health "OK" 200 {
     close
   }
+  log {
+    format json
+    output stdout
+  }
 }
