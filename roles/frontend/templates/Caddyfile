@@ -4,7 +4,7 @@
         }
 }
 :80 {
-  root / /app
+  root * /app
   file_server
   handle_path /api/* {
     reverse_proxy backend-{{ env }}.poornachandra3.online:8080
