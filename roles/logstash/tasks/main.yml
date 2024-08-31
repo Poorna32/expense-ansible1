@@ -18,10 +18,3 @@
     name: logstash
     state: restarted
     enabled: yes
-
-- name: Start Caddy Service
-  ansible.builtin.systemd_service:
-    name: caddy
-    state: restarted
-    enabled: yes
-    daemon-reload: yes
