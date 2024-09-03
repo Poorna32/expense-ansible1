@@ -56,6 +56,7 @@
     login_password: "{{rds_password}}"
     login_host: "{{ rds_endpoint }}"
 
+
 #- name: Load Schema
 #  ansible.builtin.shell: mysql -h {{ rds_endpoint }} -u{{rds_username}} -p{{rds_password}} < /app/schema/backend.sql
 
